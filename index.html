@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Saisonstatistik — Offline</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Auswahl-Seite (erste Seite) -->
+  <section id="selectionScreen" class="screen">
+    <h1>Spieler auswählen</h1>
+    <div id="selectList" class="selectList" aria-live="polite"></div>
+
+    <div class="selection-actions">
+      <button id="confirmSelection" class="btn primary">Bestätigen</button>
+      <p class="hint">Wähle die Spieler, die in der Tabelle angezeigt werden sollen</p>
+    </div>
+  </section>
+
+  <!-- Statistik-Seite (zweite Seite) -->
+  <main id="mainScreen" class="hidden">
+    <header class="header">
+      <div class="left-header"><h1>Team Statistik</h1></div>
+      <div class="right-header">
+        <button id="reselectBtn" class="btn action">Spieler wählen</button>
+        <button id="timerBtn" class="btn big timer">⏱ 00:00</button>
+        <button id="resetBtn" class="btn action">Reset</button>
+        <button id="importBtn" class="btn action">Import CSV</button>
+        <input id="fileInput" type="file" accept=".csv" style="display:none">
+        <button id="exportBtn" class="btn action">Export CSV</button>
+      </div>
+    </header>
+
+    <div class="tableWrap">
+      <table id="statsTable" aria-label="Statistiktabelle">
+        <colgroup>
+          <col style="width:auto">
+          <col style="width:auto">
+          <col class="statcol"><col class="statcol"><col class="statcol"><col class="statcol"><col class="statcol"><col class="statcol"><col class="statcol">
+        </colgroup>
+        <thead>
+          <tr id="theadRow">
+            <th>Nr</th>
+            <th>Name</th>
+            <!-- categories injected by JS -->
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+        <tfoot>
+          <tr id="totalsRow">
+            <td colspan="2" id="totalsLabel">Summe / Spieler: (0)</td>
+            <!-- totals injected by JS -->
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
